@@ -1,14 +1,23 @@
 package com.hw.meetup.server.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	private String name;
 	private String phone;
 	private String email;
+	@OneToOne(mappedBy="user")
+	private LoginUser loginUser;
+	
 	public int getId() {
 		return id;
 	}
